@@ -7,6 +7,8 @@ brand, HDR, VRR, G-Sync, and FreeSync status. It also lists every connected
 monitor with its input and `ACTIVE`/`INACTIVE` state, translated according to
 the system locale.
 
+<img width="408" height="380" alt="image" src="https://github.com/user-attachments/assets/3b531730-1e9d-4df0-8451-054cbaca0afa" />
+
 ## Runtime dependencies
 
 - Omarchy Quattro and its Quickshell-based shell.
