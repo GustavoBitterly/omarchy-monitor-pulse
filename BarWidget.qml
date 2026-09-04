@@ -58,15 +58,6 @@ BarWidget {
   onSettingsChanged: injectPanel()
   onMonitorsChanged: injectPanel()
 
-  Component.onCompleted: root.refreshMonitors()
-
-  Timer {
-    interval: 5000
-    running: true
-    repeat: true
-    onTriggered: root.refreshMonitors()
-  }
-
   Process {
     id: monitorProcess
     command: ["/usr/bin/hyprctl", "monitors", "-j"]
@@ -114,7 +105,6 @@ BarWidget {
 
     onPressed: function(b) {
       if (b === Qt.LeftButton) root.togglePanel()
-      else if (b === Qt.RightButton) root.refreshMonitors()
     }
   }
 }

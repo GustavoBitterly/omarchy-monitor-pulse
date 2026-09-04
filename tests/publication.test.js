@@ -6,6 +6,8 @@ const path = require("node:path")
 const pluginDir = path.resolve(__dirname, "..")
 const manifest = JSON.parse(fs.readFileSync(path.join(pluginDir, "manifest.json"), "utf8"))
 const readme = fs.readFileSync(path.join(pluginDir, "README.md"), "utf8")
+const barWidget = fs.readFileSync(path.join(pluginDir, "BarWidget.qml"), "utf8")
+const panel = fs.readFileSync(path.join(pluginDir, "Panel.qml"), "utf8")
 
 test("publication manifest declares the bar-widget contract and license", () => {
   assert.equal(manifest.schemaVersion, 1)
@@ -26,4 +28,14 @@ test("publication repository contains documentation for safe lifecycle", () => {
   assert.match(readme, /omarchy plugin remove/)
   assert.match(readme, /LICENSE/)
   assert.match(readme, /hyprctl monitors -j/)
+})
+
+test("automatic monitor queries happen only when the panel opens", () => {
+  assert.doesNotMatch(barWidget, /Timer\s*\{/)
+  assert.doesNotMatch(barWidget, /interval:\s*5000/)
+  assert.doesNotMatch(barWidget, /Component\.onCompleted[^\n]*refreshMonitors/)
+  assert.doesNotMatch(barWidget, /Qt\.LeftButton\)[\s\S]*Qt\.RightButton\)[\s\S]*refreshMonitors/)
+  assert.match(panel, /function open\(\)[\s\S]*refreshFromHost\(\)/)
+  assert.match(readme, /only when the\s+panel is opened/i)
+  assert.doesNotMatch(readme, /every five seconds/i)
 })

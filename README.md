@@ -16,8 +16,9 @@ the system locale.
 - Omarchy's QML modules: `qs.Commons` and `qs.Ui`.
 
 The plugin does not install packages, download resources, or require network
-access. It reads monitor state through `hyprctl monitors -j` every five seconds
-and whenever the panel opens.
+access. It reads monitor state through `hyprctl monitors -j` only when the
+panel is opened, so the information is refreshed on demand when you click the
+bar widget.
 
 ## Installation
 
