@@ -21,10 +21,10 @@ and whenever the panel opens.
 
 ## Local installation
 
-Install and enable the plugin directly from GitHub:
+Install and enable the plugin directly from "Add Plugin":
 
 ```bash
-omarchy plugin add https://github.com/GustavoBitterly/omarchy-monitor-pulse.git --enable
+https://github.com/GustavoBitterly/omarchy-monitor-pulse.git
 ```
 
 The command clones the repository, validates `manifest.json`, installs it under
