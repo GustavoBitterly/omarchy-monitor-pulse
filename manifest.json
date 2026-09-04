@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "gbp.monitor-pulse",
+  "name": "Monitor Pulse",
+  "version": "0.1.0",
+  "author": "GBP",
+  "description": "Active monitor, resolution, and refresh rate",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Monitor Pulse",
+    "description": "Active monitor, resolution, and refresh rate",
+    "category": "System",
+    "allowMultiple": false
+  }
+}
