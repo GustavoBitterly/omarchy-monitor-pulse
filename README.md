@@ -1,8 +1,6 @@
 # Monitor Pulse
 
-An Omarchy Quattro `bar-widget` with the namespace
-`io.github.GustavoBitterly.monitor-pulse`. The bar shows the `monitor-eye`
-icon; the panel shows the active monitor's resolution, refresh rate, model,
+An Omarchy Quattro `bar-widget`; The panel shows the active monitor's resolution, refresh rate, model,
 brand, HDR, VRR, G-Sync, and FreeSync status. It also lists every connected
 monitor with its input and `ACTIVE`/`INACTIVE` state, translated according to
 the system locale.
