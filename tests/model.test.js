@@ -64,15 +64,15 @@ test("localizes labels and status from the system locale", () => {
 test("the bar contains only the monitor icon", () => {
   const qml = fs.readFileSync(path.join(pluginDir, "BarWidget.qml"), "utf8")
   assert.match(qml, /text: "󱎴"/)
-  assert.match(qml, /moduleName: "gbp\.monitor-pulse"/)
+  assert.match(qml, /moduleName: "io\.github\.GustavoBitterly\.monitor-pulse"/)
   assert.doesNotMatch(qml, /displayText/)
   assert.doesNotMatch(qml, /verticalLines/)
 })
 
 test("active monitor details are separate dashed lines", () => {
   const qml = fs.readFileSync(path.join(pluginDir, "Panel.qml"), "utf8")
-  assert.match(qml, /moduleName: "gbp\.monitor-pulse"/)
-  assert.match(qml, /ipcTarget: "gbp\.monitor-pulse"/)
+  assert.match(qml, /moduleName: "io\.github\.GustavoBitterly\.monitor-pulse"/)
+  assert.match(qml, /ipcTarget: "io\.github\.GustavoBitterly\.monitor-pulse"/)
   assert.match(qml, /Model\.label\("hdr", root\.language\)/)
   assert.match(qml, /Model\.label\("vrr", root\.language\)/)
   assert.match(qml, /Model\.label\("gsync", root\.language\)/)

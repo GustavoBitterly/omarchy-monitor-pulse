@@ -8,7 +8,7 @@ import "Model.js" as Model
 // Read-only monitor status for the Omarchy bar.
 BarWidget {
   id: root
-  moduleName: "gbp.monitor-pulse"
+  moduleName: "io.github.GustavoBitterly.monitor-pulse"
 
   property var monitors: []
 
@@ -95,7 +95,7 @@ BarWidget {
   }
 
   IpcHandler {
-    target: "gbp.monitor-pulse"
+    target: "io.github.GustavoBitterly.monitor-pulse"
 
     function refresh(): void { root.broadcast("refreshMonitors") }
     function open(): void { root.open() }

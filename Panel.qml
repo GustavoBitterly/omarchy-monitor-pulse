@@ -8,8 +8,8 @@ import "Model.js" as Model
 // Read-only list of monitor state, refreshed whenever the panel opens.
 Panel {
   id: root
-  moduleName: "gbp.monitor-pulse"
-  ipcTarget: "gbp.monitor-pulse"
+  moduleName: "io.github.GustavoBitterly.monitor-pulse"
+  ipcTarget: "io.github.GustavoBitterly.monitor-pulse"
   manageIpc: false
 
   property var anchorItem: null

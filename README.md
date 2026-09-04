@@ -1,6 +1,7 @@
 # Monitor Pulse
 
-Widget `bar-widget` para Omarchy Quattro que muestra el monitor asociado a la
+Widget `bar-widget` para Omarchy Quattro con namespace
+`io.github.GustavoBitterly.monitor-pulse` que muestra el monitor asociado a la
 barra desde la que se abre el panel. La barra muestra el icono `monitor-eye`;
 el panel muestra resolución, frecuencia, modelo, marca, HDR, VRR, G-Sync y
 FreeSync del monitor activo. También lista todos los monitores conectados con
@@ -24,10 +25,10 @@ Copiar el directorio a la carpeta de plugins del usuario:
 
 ```bash
 mkdir -p ~/.config/omarchy/plugins
-cp -a gbp.monitor-pulse ~/.config/omarchy/plugins/gbp.monitor-pulse
+cp -a . ~/.config/omarchy/plugins/io.github.GustavoBitterly.monitor-pulse
 ```
 
-Añadir `gbp.monitor-pulse` al layout de la barra en
+Añadir `io.github.GustavoBitterly.monitor-pulse` al layout de la barra en
 `~/.config/omarchy/shell.json` y recargar:
 
 ```bash
