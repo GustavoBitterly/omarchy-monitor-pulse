@@ -19,7 +19,7 @@ The plugin does not install packages, download resources, or require network
 access. It reads monitor state through `hyprctl monitors -j` every five seconds
 and whenever the panel opens.
 
-## Local installation
+## Installation
 
 Install and enable the plugin directly from "Add Plugin":
 
@@ -27,10 +27,19 @@ Install and enable the plugin directly from "Add Plugin":
 https://github.com/GustavoBitterly/omarchy-monitor-pulse.git
 ```
 
+From a terminal, run the complete command instead:
+
+```bash
+omarchy plugin add https://github.com/GustavoBitterly/omarchy-monitor-pulse.git --enable
+```
+
 The command clones the repository, validates `manifest.json`, installs it under
 the manifest ID, and enables the bar widget. In an interactive terminal it may
 ask which bar section should contain the widget. For a non-interactive install,
 add `--yes`.
+
+When a graphical prompt asks for a Git URL, enter only the URL above, not the
+whole `omarchy plugin add ...` command.
 
 ### Manual installation
 
@@ -48,13 +57,36 @@ Add `io.github.GustavoBitterly.monitor-pulse` to the bar layout in
 omarchy restart shell
 ```
 
+## Disable, re-enable, and remove
+
+Disable the widget while keeping its files installed:
+
+```bash
+omarchy plugin disable io.github.GustavoBitterly.monitor-pulse
+```
+
+Enable it again, placing it in the center section:
+
+```bash
+omarchy plugin enable io.github.GustavoBitterly.monitor-pulse --section center
+```
+
+Remove the plugin and its installed copy:
+
+```bash
+omarchy plugin remove io.github.GustavoBitterly.monitor-pulse --yes
+```
+
+The remove command targets only this plugin ID. It does not remove Omarchy,
+Hyprland, packages, or user monitor settings.
+
 ## Development and validation
 
 Run these commands from the plugin root:
 
 ```bash
 # Functional JavaScript model tests
-node --test tests/model.test.js
+node --test tests/*.test.js
 
 # Validate the manifest and entry points
 omarchy plugin validate .
@@ -67,7 +99,8 @@ jq empty manifest.json
 ```
 
 The `tests/` directory checks monitor parsing, per-screen selection, EDID model
-detection, VRR, localization, the icon, and the panel's visual contract.
+detection, VRR, localization, the icon, the panel's visual contract, and the
+publication manifest/documentation contract.
 
 ## Commands used at runtime
 
@@ -78,6 +111,27 @@ detection, VRR, localization, the icon, and the panel's visual contract.
 
 The validation commands (`node`, `omarchy plugin validate`, `qmllint`, and
 `jq`) are development tools, not runtime dependencies of the widget.
+
+## Publication verification
+
+Before submitting the public GitHub repository, run the checks above and then
+verify the installed lifecycle in an active Omarchy Quattro session:
+
+```bash
+PLUGIN_ID="io.github.GustavoBitterly.monitor-pulse"
+omarchy plugin list --json | jq --arg id "$PLUGIN_ID" '.[] | select(.id == $id)'
+omarchy-shell shell summon "$PLUGIN_ID" '{}'
+omarchy-shell shell hide "$PLUGIN_ID"
+omarchy plugin disable "$PLUGIN_ID"
+omarchy plugin enable "$PLUGIN_ID" --section center
+omarchy restart shell
+omarchy plugin remove "$PLUGIN_ID" --yes
+```
+
+Also test clicking the bar icon, closing the panel with Escape, multiple
+monitors, and a monitor with unavailable capability data. The marketplace
+does not certify plugin security; review all code and dependencies before
+submitting because plugins run unsandboxed in the long-lived shell process.
 
 ## License
 

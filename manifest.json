@@ -4,6 +4,7 @@
   "name": "Monitor Pulse",
   "version": "0.1.0",
   "author": "GBP",
+  "license": "MIT",
   "description": "Active monitor, resolution, and refresh rate",
   "kinds": [
     "bar-widget"
@@ -15,6 +16,7 @@
     "displayName": "Monitor Pulse",
     "description": "Active monitor, resolution, and refresh rate",
     "category": "System",
-    "allowMultiple": false
+    "allowMultiple": false,
+    "defaultSection": "center"
   }
 }
